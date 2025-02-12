@@ -1,14 +1,20 @@
 import "./Product.css";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../reducers/cartSlice";
 
 function Product({ data }) {
+  const dispatch = useDispatch();
+
   function handleClick() {
     const item = {
       title: data.title,
       price: data.price,
       id: data.id,
+      quantity: 1,
     };
 
     console.log(item);
+    dispatch(addToCart(item));
   }
 
   return (
